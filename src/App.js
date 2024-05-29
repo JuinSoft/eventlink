@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar';
+import EventForm from './components/EventForm';
+import EventList from './components/EventList';
+import EventDetail from './components/EventDetail';
+import UserProfile from './components/UserProfile';
+import Footer from './components/Footer'; // New Footer component
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
+      <Navbar />
+      <div className="container mx-auto py-12 flex-grow">
+        <Routes>
+          <Route path="/" element={<EventList />} />
+          <Route path="/create" element={<EventForm />} />
+          <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/profile" element={<UserProfile />} />
+        </Routes>
+      </div>
+      <Footer /> {/* Add Footer here */}
     </div>
   );
 }
